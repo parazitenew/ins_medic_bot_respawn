@@ -56,6 +56,7 @@ Installation is very simple:
 
 1. Download the release archive or clone the repository.
 2. **Keep the exact folder structure provided** in this repository.
+3. You need the plugins folder with both .smx files, the gamedata and the translations. The configuration file of the plugin will be generated in **........./nsurgency/cfg/sourcemod/respawn.cfg** once you start the server.
 
 ## 🛠️ Compilation
 
