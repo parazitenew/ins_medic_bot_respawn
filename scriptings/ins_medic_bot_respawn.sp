@@ -483,7 +483,7 @@ new Handle:g_hDB;
 //
 /////////////////////////////////////
 
-#define PLUGIN_VERSION "1.8.0"
+#define PLUGIN_VERSION "1.8.1"
 #define PLUGIN_DESCRIPTION "Players and Bots Respawn (MEDIC PLUGIN)"
 #define UPDATE_URL	"http://ins.jballou.com/sourcemod/update-respawn.txt"
 #define UPDATE_URL_V1_8	"https://github.com/parazitenew/ins_medic_bot_respawn"
@@ -1717,7 +1717,7 @@ public Action:Timer_EnemyReinforce(Handle:Timer)
 					//Format(textToPrint, sizeof(textToPrint), "[INTEL]Enemies reinforce in %d seconds | Capture the point soon!", g_iReinforceTime);
 					Format(textToPrintChat, sizeof(textToPrintChat), "[INTEL]Enemies reinforce in %d seconds | Capture the point soon!", g_iReinforceTime);
 
-				PrintToChatAll(textToPrint);
+				PrintToChatAll(textToPrintChat);
 
 				//if (g_iReinforceTime <= 60)
 				//{
@@ -1741,13 +1741,19 @@ public Action:Timer_EnemyReinforce(Handle:Timer)
 		if (g_iReinforceTime <= 10 && (validAntenna != -1 || g_jammerRequired == 0))
 		{
 			
-			if (g_isHunt == 1)
+			if (g_isHunt == 1){
 				Format(textToPrint, sizeof(textToPrint), "[INTEL]Enemies reinforce in %d seconds | Kill remaining/blow cache!", g_iReinforceTime);
-			else
+				Format(textToPrintChat, sizeof(textToPrintChat), "[INTEL]Enemies reinforce in %d seconds | Kill remaining/blow cache!", g_iReinforceTime);
+			}
+
+			else{
 				Format(textToPrint, sizeof(textToPrint), "[INTEL]Enemies reinforce in %d seconds | Capture the point soon!", g_iReinforceTime);
+				Format(textToPrintChat, sizeof(textToPrintChat), "[INTEL]Enemies reinforce in %d seconds | Capture the point soon!", g_iReinforceTime);
+			}
+
 
 			PrintHintTextToAll(textToPrint);
-			//PrintToChatAll(textToPrintChat);
+			PrintToChatAll(textToPrintChat);
 		}
 		// Process reinforcement
 		if (g_iReinforceTime <= 0)
